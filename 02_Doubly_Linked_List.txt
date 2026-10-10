@@ -1,0 +1,43 @@
+TITLE: DOUBLY LINKED LIST
+AIM: Display a doubly linked list forward and backward.
+
+ALGORITHM:
+1. Define a Node class with data, prev and next fields.
+2. Create nodes containing 10, 20 and 30.
+3. Link each node to its next node and previous node.
+4. Start at the first node and follow next pointers to display forward.
+5. Start at the last node and follow prev pointers to display backward.
+6. Stop after displaying both directions.
+
+PROGRAM:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+first = Node(10)
+second = Node(20)
+third = Node(30)
+first.next = second
+second.prev = first
+second.next = third
+third.prev = second
+
+print("Forward:", end=" ")
+current = first
+while current:
+    print(current.data, end=" ")
+    current = current.next
+
+print("\nBackward:", end=" ")
+current = third
+while current:
+    print(current.data, end=" ")
+    current = current.prev
+
+OUTPUT:
+Forward: 10 20 30
+Backward: 30 20 10
+
+RESULT: The doubly linked list was displayed in both directions.

@@ -1,0 +1,40 @@
+TITLE: HASH TABLE USING LINEAR PROBING
+AIM: Insert keys into a hash table using linear probing.
+
+ALGORITHM:
+1. Create a table with 10 empty positions.
+2. Use key modulo 10 as the initial index.
+3. If the position is occupied, check the next position.
+4. Wrap to index 0 after the last index using modulo.
+5. Insert the key in the first empty position.
+6. Display each occupied index and its value.
+
+PROGRAM:
+SIZE = 10
+table = [None] * SIZE
+keys = [12, 22, 32, 15]
+
+for key in keys:
+    index = key % SIZE
+    checked = 0
+    while table[index] is not None and checked < SIZE:
+        index = (index + 1) % SIZE
+        checked += 1
+    if checked < SIZE:
+        table[index] = key
+    else:
+        print("Hash table is full")
+
+print("Index  Value")
+for i in range(SIZE):
+    if table[i] is not None:
+        print(i, "     ", table[i])
+
+OUTPUT:
+Index  Value
+2       12
+3       22
+4       32
+5       15
+
+RESULT: The keys were inserted using linear probing.

@@ -1,0 +1,37 @@
+TITLE: POSTFIX EXPRESSION EVALUATION USING STACK
+AIM: Evaluate a postfix expression using a stack.
+
+ALGORITHM:
+1. Store the expression 23*5+.
+2. Create an empty stack.
+3. Read each character from left to right.
+4. If it is a digit, convert it to an integer and push it.
+5. If it is an operator, pop operand b and then operand a.
+6. Perform a operator b and push the result.
+7. Continue until the expression ends.
+8. Display the value left on the stack.
+
+PROGRAM:
+expression = "23*5+"
+stack = []
+for char in expression:
+    if char.isdigit():
+        stack.append(int(char))
+    else:
+        b = stack.pop()
+        a = stack.pop()
+        if char == "+":
+            stack.append(a + b)
+        elif char == "-":
+            stack.append(a - b)
+        elif char == "*":
+            stack.append(a * b)
+        elif char == "/":
+            stack.append(a // b)
+print("Postfix Result =", stack[-1])
+
+OUTPUT:
+Postfix Result = 11
+
+RESULT: The postfix expression was evaluated successfully.
+NOTE: This simple version supports single-digit operands.

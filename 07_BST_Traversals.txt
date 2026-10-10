@@ -1,0 +1,56 @@
+TITLE: BINARY TREE TRAVERSALS
+AIM: Display inorder, preorder and postorder traversals.
+
+ALGORITHM:
+1. Define a Node class with data, left and right fields.
+2. Create root 50, with children 30 and 70.
+3. Give node 30 children 20 and 40.
+4. Inorder visits left subtree, root, right subtree.
+5. Preorder visits root, left subtree, right subtree.
+6. Postorder visits left subtree, right subtree, root.
+7. Display the three traversals.
+
+PROGRAM:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def inorder(node):
+    if node:
+        inorder(node.left)
+        print(node.data, end=" ")
+        inorder(node.right)
+
+def preorder(node):
+    if node:
+        print(node.data, end=" ")
+        preorder(node.left)
+        preorder(node.right)
+
+def postorder(node):
+    if node:
+        postorder(node.left)
+        postorder(node.right)
+        print(node.data, end=" ")
+
+root = Node(50)
+root.left = Node(30)
+root.right = Node(70)
+root.left.left = Node(20)
+root.left.right = Node(40)
+
+print("Inorder:", end=" ")
+inorder(root)
+print("\nPreorder:", end=" ")
+preorder(root)
+print("\nPostorder:", end=" ")
+postorder(root)
+
+OUTPUT:
+Inorder: 20 30 40 50 70
+Preorder: 50 30 20 40 70
+Postorder: 20 40 30 70 50
+
+RESULT: All three tree traversals were displayed successfully.

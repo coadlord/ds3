@@ -1,0 +1,34 @@
+TITLE: SINGLY LINKED LIST
+AIM: Create and display a singly linked list.
+
+ALGORITHM:
+1. Define a Node class with data and next fields.
+2. Create nodes containing 10, 20 and 30.
+3. Link the first node to the second and the second to the third.
+4. Store the first node in head.
+5. Set current to head.
+6. While current is not None, display its data and move to current.next.
+7. Stop after all nodes are displayed.
+
+PROGRAM:
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+first = Node(10)
+second = Node(20)
+third = Node(30)
+first.next = second
+second.next = third
+
+current = first
+print("Singly Linked List:", end=" ")
+while current is not None:
+    print(current.data, end=" ")
+    current = current.next
+
+OUTPUT:
+Singly Linked List: 10 20 30
+
+RESULT: The singly linked list was created and displayed successfully.

@@ -1,0 +1,39 @@
+TITLE: LINEAR QUEUE AND CIRCULAR QUEUE
+AIM: Demonstrate insertion and deletion in linear and circular queues.
+
+ALGORITHM:
+1. Create an empty linear queue.
+2. Insert 10, 20 and 30, then display it.
+3. Remove the first item and display the remaining items.
+4. Create a circular queue of size 5.
+5. Insert 10, 20 and 30 using modulo arithmetic for rear.
+6. Delete one item by advancing front and reducing count.
+7. Display remaining circular queue values in logical order.
+
+PROGRAM:
+SIZE = 5
+queue = []
+queue.extend([10, 20, 30])
+print("Linear Queue:", *queue)
+queue.pop(0)
+print("After deletion:", *queue)
+
+circular = [None] * SIZE
+front = 0
+rear = -1
+count = 0
+for value in [10, 20, 30]:
+    rear = (rear + 1) % SIZE
+    circular[rear] = value
+    count += 1
+front = (front + 1) % SIZE
+count -= 1
+remaining = [circular[(front + i) % SIZE] for i in range(count)]
+print("Circular Queue after one deletion:", *remaining)
+
+OUTPUT:
+Linear Queue: 10 20 30
+After deletion: 20 30
+Circular Queue after one deletion: 20 30
+
+RESULT: Queue insertion and deletion were demonstrated.

@@ -1,0 +1,53 @@
+TITLE: DIJKSTRA SHORTEST PATH
+AIM: Find shortest distances from source vertex 0.
+
+ALGORITHM:
+1. Store the weighted graph in an adjacency matrix.
+2. Set all distances to infinity and the source distance to zero.
+3. Mark all vertices unvisited.
+4. Select the unvisited vertex with the smallest known distance.
+5. Mark it visited.
+6. For each adjacent unvisited vertex, calculate the distance through the selected vertex.
+7. Update the distance if the new distance is smaller.
+8. Repeat until all reachable vertices are processed.
+9. Print the distance from source 0 to every vertex.
+
+PROGRAM:
+INF = 999
+graph = [
+    [0, 3, 1, 0],
+    [3, 0, 0, 5],
+    [1, 0, 0, 7],
+    [0, 5, 7, 0]
+]
+n = len(graph)
+distance = [INF] * n
+visited = [False] * n
+distance[0] = 0
+
+for _ in range(n):
+    minimum = INF
+    u = -1
+    for i in range(n):
+        if not visited[i] and distance[i] < minimum:
+            minimum = distance[i]
+            u = i
+    if u == -1:
+        break
+    visited[u] = True
+    for v in range(n):
+        if graph[u][v] != 0 and not visited[v]:
+            new_distance = distance[u] + graph[u][v]
+            if new_distance < distance[v]:
+                distance[v] = new_distance
+
+for i in range(n):
+    print("Distance to", i, "=", distance[i])
+
+OUTPUT:
+Distance to 0 = 0
+Distance to 1 = 3
+Distance to 2 = 1
+Distance to 3 = 8
+
+RESULT: Dijkstra's algorithm found the shortest distances.
